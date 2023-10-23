@@ -35,3 +35,16 @@ unsigned long getTimeDiff(unsigned long cycles_high0, unsigned long cycles_low0,
         unsigned long duration = end - start;
         return duration;
 }
+
+void setPriority(int priority){
+    pid_t pid = getpid();
+    int older_priority = getpriority(PRIO_PROCESS, pid);
+    int ret;
+
+    ret = nice(priority); // Adjust the priority by the difference
+
+    assert(priority == ret);
+
+    int current_priority = getpriority(PRIO_PROCESS, pid);
+    printf("older priority: %d, current priority: %d\n", older_priority, current_priority);
+}
