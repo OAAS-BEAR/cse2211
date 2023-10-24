@@ -3,27 +3,15 @@
 #include <x86intrin.h> // for rdtsc
 using namespace std;
 
-
+const int iter = 100000;
 int main(){
-    setPriority(-20);
-    uint64_t start, end, duration;
-    timer_start;
-    for(int i = 0; i < ITERATIONS * ITERATIONS; ++i)
-    timer_end;
 
-
-    start = __rdtsc();
-    for(int i = 0; i < ITERATIONS * ITERATIONS ; ++i)
-    end = __rdtsc();
-    cout << end - start <<endl;
-    duration = end - start;
-
-
-    unsigned long long res = getTimeDiff(cycles_high0, cycles_low0, cycles_high1, cycles_low1);
-    cout << res <<endl;
-
-
-    cout << double(duration - res) / duration<<endl;
+    uint64_t start = __rdtsc();
+    for(int i = 0; i < iter ; ++i){}
+    uint64_t end = __rdtsc();
+    cout << (end - start) <<endl;
+    uint64_t duration = end - start;
+    cout << static_cast<double>(duration) / iter<<endl;
 
     return 0;
 }
