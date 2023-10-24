@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdio.h>
-#include "timer_util.h"
+#include "../../../utils/timer_util.h"
 #include <unistd.h>
 #include<sys/wait.h>
 using namespace std;
@@ -13,12 +13,11 @@ void test_system_call(){
     else{
         vector<unsigned long>durations;
         for(int i=0;i<loop;i++){
-            unsigned long cycles_high0, cycles_low0, cycles_high1, cycles_low1;
-            timer_start;
+            unsigned long start, end;
+            start = __rdtsc();
             getppid();
-            timer_end;
-            unsigned long duration=getTimeDiff(cycles_high0, cycles_low0, cycles_high1, cycles_low1);
-            durations.push_back(duration);
+            end = __rdtsc();
+            durations.push_back((end - start));
         }
         double mean=MEAN(durations);
         double standard=STD(durations);
