@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include "timer_util.h"
-
+using namespace std;
 void func0(){
 }
 void func1(int argument1){
@@ -18,16 +18,20 @@ void func6(int argument1,int argument2,int argument3,int argument4,int argument5
 }
 void func7(int argument1,int argument2,int argument3,int argument4,int argument5,int argument6,int argument7){
 }
-int loop=1000;
-void test_func0(){
-    unsigned long cycles_high0, cycles_low0, cycles_high1, cycles_low1;
-    timer_start;
+int loop=10000;
+void test_func0(){      
+    vector<unsigned long>durations;
     for(int i=0;i<loop;i++){
+        unsigned long cycles_high0, cycles_low0, cycles_high1, cycles_low1;
+        timer_start;
         func0();
+        timer_end;
+        unsigned long duration=getTimeDiff(cycles_high0, cycles_low0, cycles_high1, cycles_low1);
+        durations.push_back(duration);
     }
-    timer_end;
-    unsigned long duration=getTimeDiff(cycles_high0, cycles_low0, cycles_high1, cycles_low1);
-    printf("The cycle needed for calling precedure with 0 argument:%lu\n",duration);
+    double mean=MEAN(durations);
+    double standard=STD(durations);
+    cout<<"The mean cycles needed for calling precedure with 0 argument:"<<mean<<" std:"<<standard<<endl;
 }
 void test_func1(){
     unsigned long cycles_high0, cycles_low0, cycles_high1, cycles_low1;
@@ -111,11 +115,11 @@ void test_func4(){
 
 int main(){
     test_func0();
-  //  test_func1();
-  //  test_func2();
-  //  test_func3();
-  //  test_func4();
-   // test_func5();
-   // test_func6();
-    //test_func7();
+    test_func1();
+    test_func2();
+    test_func3();
+    test_func4();
+    test_func5();
+    test_func6();
+    test_func7();
 }
