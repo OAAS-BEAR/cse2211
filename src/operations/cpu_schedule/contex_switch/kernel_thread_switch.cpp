@@ -63,7 +63,7 @@ void switchThread(){
         std::cout << diff[i * spacing] << " ";
     }
     cout<<endl;
-    cout << "process switch time: " << accumulate(diff.begin(), diff.end(), 0.0) / diff.size()<<endl;
+    cout << "thread switch time: " << accumulate(diff.begin(), diff.end(), 0.0) / diff.size()<<endl;
 }
 
 

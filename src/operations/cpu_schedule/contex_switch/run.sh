@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Compile the C++ file
-g++ process_switch.cpp -o process_switch
+g++ process_switch.cpp -pthread -o process_switch
 # Check if the compilation was successful
 if [ $? -eq 0 ]; then
     echo "Compilation successful. running ./process_switch"
@@ -12,7 +12,7 @@ else
 fi
 
 
-g++ kernel_thread_switch.cpp -o kernel_thread_switch
+g++ kernel_thread_switch.cpp -pthread -o kernel_thread_switch
 
 # Check if the compilation was successful
 if [ $? -eq 0 ]; then
