@@ -10,6 +10,6 @@ include_directories(utils)
 ### Add your executables below:
 add_executable(${PROJECT_NAME} main.cpp)
 
-add_executable(procedure operations/cpu_schedule/procedure_call/procedure.cpp)
-set_target_properties(procedure PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/procedure)
+add_executable(system_call operations/cpu_schedule/system_call/system_call.cpp)
+set_target_properties(system_call PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/system_call)
 ### Do not modify other parts
