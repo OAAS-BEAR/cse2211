@@ -26,8 +26,8 @@ void test_func0(){
         func0();
     }
     timer_end;
-    unsigned long duration=getTimeDiff(cycles_high0, cycles_low0, cycles_high1, cycles_low1)
-    printf("The cycle needed for calling precedure with 0 argument:%lu\n",duration)
+    unsigned long duration=getTimeDiff(cycles_high0, cycles_low0, cycles_high1, cycles_low1);
+    printf("The cycle needed for calling precedure with 0 argument:%lu\n",duration);
 }
 void test_func1(){
     unsigned long cycles_high0, cycles_low0, cycles_high1, cycles_low1;
