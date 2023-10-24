@@ -17,13 +17,15 @@ void switchProcess(){
         }
         if (pid == 0){
             //child process
-            timer_end;
+            
+            timer_start;
             ret = read(pipefd[0], &buf, 1);
+            timer_end;
             exit(0);
 
         }else{
             ret = write(pipefd[1], &buf, 1);
-            timer_start;
+            
         }
         diff.push_back(getTimeDiff(cycles_high0, cycles_low0, cycles_high1, cycles_low1));
     }
