@@ -35,6 +35,23 @@ unsigned long getTimeDiff(unsigned long cycles_high0, unsigned long cycles_low0,
         return duration;
 }
 
+const int MAXPRIORITY = -20;
+
+void setPriority(int priority=MAXPRIORITY){
+    pid_t pid = getpid();
+    int older_priority = getpriority(PRIO_PROCESS, pid);
+
+    int ret = setpriority(PRIO_PROCESS, pid, priority);
+
+    int current_priority = getpriority(PRIO_PROCESS, pid);
+    // std::cout << "Desired Priority: " << priority << ", "
+    //       << "Old Priority: " << older_priority << ", "
+    //       << "Current Priority: " << current_priority << std::endl;
+    assert(priority == current_priority);
+
+    
+}
+
 double MEAN(std::vector<unsigned long> durations){
     return double(std::accumulate(durations.begin(),durations.end(),0.0)/durations.size());
 

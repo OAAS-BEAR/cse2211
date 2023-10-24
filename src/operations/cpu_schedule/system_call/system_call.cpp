@@ -27,6 +27,7 @@ void test_system_call(){
 
 }
 int main(){
+    setPriority(-20);
     test_system_call();
     return 0;
 }

@@ -114,6 +114,7 @@ void test_func4(){
 }
 
 int main(){
+    setPriority(-20);
     test_func0();
     test_func1();
     test_func2();
