@@ -10,16 +10,16 @@ using namespace std;
 
 void switchProcess(){
     uint64_t start, end, duration;
-    int pipefd_c[2];
-    int pipefd_p[2];
-    pipe(pipefd_c);
-    pipe(pipefd_p);
     char buf = 'a';
     int ret;
 
     vector<double> diff;
 
     for (int i = 0; i < 1000; ++i){
+        int pipefd_c[2];
+        int pipefd_p[2];
+        pipe(pipefd_c);
+        pipe(pipefd_p);
         pid_t pid = fork();
         if (pid < 0){
             cout << "Fork Fail!"<<endl;
@@ -46,6 +46,11 @@ void switchProcess(){
         }
 
     }
+    size_t spacing = (diff.size() - 1) / 19;
+    for (size_t i = 0; i < 20; ++i) {
+        std::cout << diff[i * spacing] << " ";
+    }
+    cout<<endl;
     cout << "process switch time: " << accumulate(diff.begin(), diff.end(), 0.0) / diff.size()<<endl;
 }
 

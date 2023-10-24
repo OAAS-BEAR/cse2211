@@ -15,9 +15,11 @@
 
 
 const int MAXPRIORITY = -20;
-const int ITERATIONS = 1000000;
+const int ITERATIONS = 1000;
 
 
+
+// set priority for current process
 void setPriority(int priority=MAXPRIORITY){
     pid_t pid = getpid();
     int older_priority = getpriority(PRIO_PROCESS, pid);
