@@ -12,21 +12,17 @@
 
 unsigned long cycles_high0, cycles_low0, cycles_high1, cycles_low1;
 #define timer_start \
-    asm volatile ("cpuid\n\t" \
-		  "rdtsc\n\t" \
-		  "mov %%edx, %0\n\t" \
-		  "mov %%eax, %1\n\t" \
-		  : "=r" (cycles_high0), "=r" (cycles_low0) \
-		  :: "%rax", "%rbx", "%rcx", "%rdx");
+    asm volatile ("rdtsc\n\t" \
+		  "mov %%rdx, %0\n\t" \
+		  "mov %%rax, %1\n\t" \
+		  : "=r" (cycles_high0), "=r" (cycles_low0));
 
     /* code to measure */
 #define timer_end \
-    asm volatile ("rdtscp\n\t" \
-		  "mov %%edx, %0\n\t" \
-		  "mov %%eax, %1\n\t" \
-		  "cpuid\n\t" \
-		  : "=r" (cycles_high1), "=r" (cycles_low1) \
-		  :: "%rax", "%rbx", "%rcx", "%rdx");
+    asm volatile ("rdtsc\n\t" \
+		  "mov %%rdx, %0\n\t" \
+		  "mov %%rax, %1\n\t" \
+		  : "=r" (cycles_high1), "=r" (cycles_low1));
 
 
 unsigned long getTimeDiff(unsigned long cycles_high0, unsigned long cycles_low0, unsigned long cycles_high1, unsigned long cycles_low1){
