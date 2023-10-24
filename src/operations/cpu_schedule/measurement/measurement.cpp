@@ -2,14 +2,21 @@
 
 
 namespace CPU_M {
-    const size_t numIteration = 100;
+    const size_t numIteration = 10000;
 }
 
 int main(){
-    unsigned long cycles_high0, cycles_low0, cycles_high1, cycles_low1;
-    timer_start;
-    timer_end;
-    unsigned long duration = getTimeDiff(cycles_high0, cycles_low0, cycles_high1, cycles_low1);
-    printf("duration: %lu\n", duration);
+    unsigned long long start, end;
+    unsigned long long duration{0};
+    
+    for(int i = 0; i < CPU_M::numIteration; ++i){
+        setPriority();
+        start = __rdtsc();
+        //Empty code
+        end = __rdtsc();
+        duration += end - start;
+    }
+
+    std::cout<<"Average measurement overhead: "<<static_cast<double>(duration)/CPU_M::numIteration<<std::endl;
     return 0;
 }
