@@ -25,12 +25,12 @@ void setPriority(int priority=MAXPRIORITY){
     int older_priority = getpriority(PRIO_PROCESS, pid);
 
     int ret = setpriority(PRIO_PROCESS, pid, priority);
-
+	if (ret == -1) {
+		std::cout<<"setpriority failed: "<<strerror(errno)<<std::endl;
+	}
     int current_priority = getpriority(PRIO_PROCESS, pid);
     // std::cout << "Desired Priority: " << priority << ", "
     //       << "Old Priority: " << older_priority << ", "
     //       << "Current Priority: " << current_priority << std::endl;
     assert(priority == current_priority);
-
-    
 }
