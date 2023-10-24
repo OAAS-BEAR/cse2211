@@ -34,7 +34,8 @@ add_executable(process_switch operations/cpu_schedule/contex_switch/process_swit
 set_target_properties(process_switch PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/CPU)
 
 add_executable(system_call operations/cpu_schedule/system_call/system_call.cpp)
+set_target_properties(system_call PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/CPU)
+
 add_executable(procedure operations/cpu_schedule/procedure_call/procedure.cpp)
-set_target_properties(system_call PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/system_call)
-set_target_properties(procedure PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/procedure)
+set_target_properties(procedure PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/CPU)
 ### Do not modify other parts
