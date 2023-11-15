@@ -38,4 +38,7 @@ set_target_properties(system_call PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BI
 
 add_executable(procedure operations/cpu_schedule/procedure_call/procedure.cpp)
 set_target_properties(procedure PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/CPU)
+
+add_executable(pagefault operations/memory/pagefault/pagefault.cpp)
+set_target_properties(pagefault PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/memory)
 ### Do not modify other parts
