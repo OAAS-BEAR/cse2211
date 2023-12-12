@@ -41,4 +41,11 @@ set_target_properties(procedure PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINA
 
 add_executable(pagefault operations/memory/pagefault/pagefault.cpp)
 set_target_properties(pagefault PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/memory)
+add_executable(rfs operations/filesystem/remote/read_sequential_remote.cpp)
+set_target_properties(rfs PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/filesystem)
+add_executable(rfr operations/filesystem/remote/read_random_remote.cpp)
+set_target_properties(rfr PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/filesystem)
+
+add_executable(contention operations/filesystem/contention/contention.cpp)
+set_target_properties(contention PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/filesystem)
 ### Do not modify other parts
